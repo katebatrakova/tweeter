@@ -10,6 +10,10 @@
   flex-direction: column-reverse;
 }
 
+#tweetcontent {
+  word-wrap: break-word;
+}
+
 #tweet-text {
   border: 0;
   outline: 0;

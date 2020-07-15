@@ -21,7 +21,7 @@ const createTweetElement = function (singleTweet) {
     <div><span> <img src="${singleTweet.user.avatars}"/> </span>  <span>${singleTweet.user.name}</span></div>
     <div ><span id = "handle"> ${singleTweet.user.handle} </span> </div>
     </div>
-  <p>${singleTweet.content.text}</p>
+  <p id='tweetcontent'>${singleTweet.content.text}</p>
   <hr/>  
   </header>  
   <footer>
@@ -37,7 +37,6 @@ const createTweetElement = function (singleTweet) {
 
 const renderTweets = function (tweetDataArray) {
   // loops through tweets
-
   tweetDataArray.forEach((singleTweet) => {
     // calls createTweetElement for each tweet
     let createdTweet = createTweetElement(singleTweet)
@@ -64,40 +63,33 @@ $(document).ready(function () {
     if (inputData.length > 140) {
       alert('Sorry, your tweet exceeds 140 characters')
     }
-
-    $.ajax({
-      url: tweetDataBase,
-      method: 'POST',
-      data: data
-    })
-      .then((response) => {
-        //clearing the text area after submitting
-        $("#posttweet")[0].reset()
-        console.log(response, 'response')
+    if (inputData.length <= 140) {
+      $.ajax({
+        url: tweetDataBase,
+        method: 'POST',
+        data: data
       })
-
+        .then((response) => {
+          //clearing the text area after submitting
+          $("#posttweet")[0].reset()
+          console.log(response, 'response')
+          loadTweets();
+        })
+    }
   });
 
   const loadTweets = function () {
     const tweetDataBase = 'http://localhost:8080/tweets';
-    const data = $('#posttweet');
-    const inputData = event.currentTarget[0].value;
-    if (inputData.length <= 140) {
-      $.ajax({
-        url: tweetDataBase,
-        method: 'GET',
-        dataType: 'JSON'
+    $.ajax({
+      url: tweetDataBase,
+      method: 'GET',
+      dataType: 'JSON'
+    })
+      .then((response) => {
+        console.log(response, 'response')
+        renderTweets(response);
       })
-        .then((response) => {
-          console.log(response, 'response')
-          renderTweets(response);
-        })
-    }
   }
-
-  $('#posttweet').on('submit', (event) => {
-    loadTweets();
-  })
 })
 
 
