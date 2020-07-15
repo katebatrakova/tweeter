@@ -4,57 +4,83 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
 //function takes in a tweet object and returns a tweet <article> HTML structure 
 
-const createTweetElement = function (tweetData) {
-  // console.log("DATA IS INSIDE");
-  // console.log(tweetData.user.name)
-  // console.log(tweetData.user.avatars)
-  // console.log(tweetData.user.handle)
-  // console.log(tweetData.content.text)
-  // console.log(tweetData['created_at'])
-  const item = `
+const createTweetElement = function (singleTweet) {
+  const tweetItem = `
   <article>
   <header>
     <div id="tweetHeader" >
-    <div><span> <img src="${tweetData.user.avatars}"/> </span>  <span>${tweetData.user.name}</span></div>
-    <div ><span id = "handle"> ${tweetData.user.handle} </span> </div>
+    <div><span> <img src="${singleTweet.user.avatars}"/> </span>  <span>${singleTweet.user.name}</span></div>
+    <div ><span id = "handle"> ${singleTweet.user.handle} </span> </div>
     </div>
-  <p>${tweetData.content.text}</p>
+  <p>${singleTweet.content.text}</p>
   <hr/>  
   </header>  
   <footer>
     <div>
-      <span> ${tweetData['created_at']} </span>
+      <span> ${singleTweet['created_at']} </span>
     </div> 
     <div><span class="iconify" data-icon="bi:flag-fill" data-inline="false"></span>  <span class="iconify" data-icon="entypo:retweet" data-inline="false"> </span>  <span class="iconify" data-icon="bi:suit-heart-fill" data-inline="false" </span></div> 
   </footer>
 </article>   
  `
-  return item;
+  return tweetItem;
 }
 
-// // Temporary test code
+//Array of tweet objects
 
-const tweetData =
+const tweetDataArray = [{
+  user: {
+    name: "Descartes",
+    avatars: "https://i.imgur.com/nlhLi3I.png",
+    handle: "@rd"
+  },
+  content: {
+    text: "Je pense , donc je suis"
+  },
+  created_at: 1461113959088
+},
 {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png"
-    ,
-    "handle": "@SirIsaac"
+  user: {
+    name: "Newton",
+    avatars: "https://i.imgur.com/73hZDYK.png",
+    handle: "@SirIsaac"
   },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
+  content: {
+    text: "If I have seen further it is by standing on the shoulders of giants"
   },
-  "created_at": 1461116232227
+  created_at: 1461116232227
+}
+];
+
+const renderTweets = function (tweetDataArray) {
+  // loops through tweets
+  tweetDataArray.forEach((singleTweet) => {
+    // calls createTweetElement for each tweet
+    let createdTweet = createTweetElement(singleTweet)
+    // console.log(createdTweet)
+    // takes return value and appends it to the tweets container
+    $('.container').append(createdTweet);
+  })
 }
 
-//save the function's output (tweet article) to a variable
-const $tweet = createTweetElement(tweetData);
-
-// add the tweet article to .container
 
 $(document).ready(function () {
-  $('.container').append($tweet);
+  renderTweets(tweetDataArray);
+
+  // $('#tweet-text').on('submit', (event) => {
+  //   console.log(event)
+  //console.log(evt.target.searchParam.value);
+  // const searchParameter = evt.target.searchParam.value;
+  // searchItem(searchParameter);
+  // })
+  $('#posttweet').on('submit', (event) => {
+    // prevent the default form submission behaviour
+    event.preventDefault();
+    console.log(event);
+  })
 });
+
