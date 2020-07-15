@@ -9,6 +9,11 @@
 //function takes in a tweet object and returns a tweet <article> HTML structure 
 
 const createTweetElement = function (singleTweet) {
+  //handling the date
+  let todayDate = new Date();
+  todayDate = Date.parse(todayDate)
+  let tweetDate = `${singleTweet['created_at']}`
+  let diff = todayDate - tweetDate;
   const tweetItem = `
   <article>
   <header>
@@ -21,7 +26,7 @@ const createTweetElement = function (singleTweet) {
   </header>  
   <footer>
     <div>
-      <span> ${singleTweet['created_at']} </span>
+      <span> ${diff} days ago </span>
     </div> 
     <div><span class="iconify" data-icon="bi:flag-fill" data-inline="false"></span>  <span class="iconify" data-icon="entypo:retweet" data-inline="false"> </span>  <span class="iconify" data-icon="bi:suit-heart-fill" data-inline="false" </span></div> 
   </footer>
@@ -32,13 +37,13 @@ const createTweetElement = function (singleTweet) {
 
 const renderTweets = function (tweetDataArray) {
   // loops through tweets
-  // $('.container').empty(); 
+
   tweetDataArray.forEach((singleTweet) => {
     // calls createTweetElement for each tweet
     let createdTweet = createTweetElement(singleTweet)
     // console.log(createdTweet)
     // takes return value and appends it to the tweets container
-    $('.container').append(createdTweet);
+    $('.tweetcontainer').append(createdTweet);
   })
 }
 
@@ -50,7 +55,7 @@ $(document).ready(function () {
     console.log('Submit button clicked');
     const tweetDataBase = 'http://localhost:8080/tweets';
     const data = $('#posttweet').serialize()
-    const inputData = event.currentTarget[0].value;
+    let inputData = event.currentTarget[0].value;
 
     if (inputData.length === 0) {
       alert('Sorry, the text area cannot be empty')
@@ -66,8 +71,11 @@ $(document).ready(function () {
       data: data
     })
       .then((response) => {
+        //clearing the text area after submitting
+        $("#posttweet")[0].reset()
         console.log(response, 'response')
       })
+
   });
 
   const loadTweets = function () {

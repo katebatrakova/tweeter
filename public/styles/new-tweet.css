@@ -5,6 +5,10 @@
   flex-direction: column;
   background-color: #f4f1ec;
 }
+.tweetcontainer {
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 #tweet-text {
   border: 0;
