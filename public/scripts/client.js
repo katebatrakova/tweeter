@@ -30,32 +30,6 @@ const createTweetElement = function (singleTweet) {
   return tweetItem;
 }
 
-//Array of tweet objects
-
-// const tweetDataArray = [{
-//   user: {
-//     name: "Descartes",
-//     avatars: "https://i.imgur.com/nlhLi3I.png",
-//     handle: "@rd"
-//   },
-//   content: {
-//     text: "Je pense , donc je suis"
-//   },
-//   created_at: 1461113959088
-// },
-// {
-//   user: {
-//     name: "Newton",
-//     avatars: "https://i.imgur.com/73hZDYK.png",
-//     handle: "@SirIsaac"
-//   },
-//   content: {
-//     text: "If I have seen further it is by standing on the shoulders of giants"
-//   },
-//   created_at: 1461116232227
-// }
-// ];
-
 const renderTweets = function (tweetDataArray) {
   // loops through tweets
   // $('.container').empty(); 
@@ -70,23 +44,22 @@ const renderTweets = function (tweetDataArray) {
 
 
 $(document).ready(function () {
-  // renderTweets(tweetDataArray);
-
-  // $('#tweet-text').on('submit', (event) => {
-  //   console.log(event)
-  //console.log(evt.target.searchParam.value);
-  // const searchParameter = evt.target.searchParam.value;
-  // searchItem(searchParameter);
-  // })
   $('#posttweet').on('submit', (event) => {
     // prevent the default form submission behaviour
     event.preventDefault();
     console.log('Submit button clicked');
     const tweetDataBase = 'http://localhost:8080/tweets';
     const data = $('#posttweet').serialize()
-    // const params = event.target.search.value;
-    // const inputData = event.currentTarget[0].value;
-    // console.log('posttweet event', event)
+    const inputData = event.currentTarget[0].value;
+
+    if (inputData.length === 0) {
+      alert('Sorry, the text area cannot be empty')
+    }
+
+    if (inputData.length > 140) {
+      alert('Sorry, your tweet exceeds 140 characters')
+    }
+
     $.ajax({
       url: tweetDataBase,
       method: 'POST',
@@ -94,27 +67,29 @@ $(document).ready(function () {
     })
       .then((response) => {
         console.log(response, 'response')
-        renderTweets(response);
       })
   });
 
   const loadTweets = function () {
-    $('#posttweet').on('submit', (event) => {
-      const tweetDataBase = 'http://localhost:8080/tweets';
-      const data = $('#posttweet');
+    const tweetDataBase = 'http://localhost:8080/tweets';
+    const data = $('#posttweet');
+    const inputData = event.currentTarget[0].value;
+    if (inputData.length <= 140) {
       $.ajax({
         url: tweetDataBase,
         method: 'GET',
-        // dataType: 'JSON'
+        dataType: 'JSON'
       })
         .then((response) => {
           console.log(response, 'response')
           renderTweets(response);
         })
     }
-    )
   }
-  loadTweets();
+
+  $('#posttweet').on('submit', (event) => {
+    loadTweets();
+  })
 })
 
 
