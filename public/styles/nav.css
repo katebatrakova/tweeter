@@ -1,29 +1,22 @@
 /* Tweeter logo in the nav font */
-#logo {
-  font-family: "Bungee", cursive;
-  margin-top: 1.5em;
-  margin-left: 1.5em;
-  margin-bottom: 1.5em;
-  font-size: 1.5em;
-}
-
 nav {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height: 120px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #4056a1;
   color: #ffffff;
-  height: 120px;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  padding: 1.5em;
 }
 
-#newtweet {
-  margin-top: 1.5em;
-  margin-right: 1.5em;
-  margin-bottom: 1.5em;
+#logo {
+  font-family: "Bungee", cursive;
+  font-size: 1.5em;
 }
+
 #newtweet .iconify {
   color: red;
   margin-left: 50%;

@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+//Being able to send out the public folder
 app.use(express.static("public"));
 
 // The in-memory database of tweets. It's a basic object with an array in it.
@@ -114,5 +115,95 @@ app.listen(PORT, () => {
 //   $('#pets-container').append(createArticle(petsArr));
 //   renderArticles(petsArr);
 // })
+
+
+
+
+// LECTURE AJAX 
+
+
+// const tweetDataBase = [
+//   {
+//     user: {
+//       name: "Descartes",
+//       avatars: "https://i.imgur.com/nlhLi3I.png",
+//       handle: "@rd"
+//     },
+//     content: {
+//       text: "Je pense , donc je suis"
+//     },
+//     created_at: 1461113959088
+//   },
+//   {
+//     user: {
+//       name: "Newton",
+//       avatars: "https://i.imgur.com/73hZDYK.png",
+//       handle: "@SirIsaac"
+//     },
+//     content: {
+//       text: "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     created_at: 1461116232227
+//   }
+// ]
+
+// const createItem = (data) => {
+//   // console.log(data[1].content.text, ' ---content of the tweet');
+//   // console.log(data[1].user.name, ' ---- name');
+//   // console.log(data[1].user.avatars, ' ---- avatar');
+//   // console.log(data[1].user.handle, ' ---- handle');
+//   // $(#container).append(item)
+//   const tweet =
+//     `<article>
+//       <header>
+//         <div id="tweetHeader" >
+//         <div> <img src ='${data[1].user.avatars}> <span>${data[1].user.name}</span></div>
+//         <div ><span id = "handle"> ${data[1].user.handle} </span> </div>
+//         </div>
+//       <p>${data[1].content.text}</p>
+//       <hr>  
+//       </header> 
+
+//       <footer>
+//         <div>
+//           <span> 10 days ago </span>
+//       </div> 
+//       <div><span class="iconify" data-icon="bi:flag-fill" data-inline="false"></span>  <span class="iconify" data-icon="entypo:retweet" data-inline="false"> </span>  <span class="iconify" data-icon="bi:suit-heart-fill" data-inline="false"> </span></div> 
+//       </footer>
+//           </article>`
+//   return tweet;
+// }
+
+// const searchItem = (string) => {
+//   const api = 'http://api.tvmaze.com/searcg/shows?q='
+//   const apiWithParam = api + string;
+//   $.ajax({
+//     url: apiWithParam,
+//     method: 'GET',
+//   })
+//     .then((response) => {
+//     // remove all children with jqueary , repopulate 
+//     // run empty()(every time) before appending
+//     $(tweetHeader).empty()
+//     console.log('AJAX call came back with response')
+//     //once we get the info we use the createItem dunction to append multiple items we found
+//     response.forEach((element) => {
+//       console.log(element);
+//       let tempItem = createItem(element)
+//       $('#tweetHeader').append(searchItem(element))
+//     });
+//   })
+// }
+
+// // $('#tweetHeader').append(tweet)
+
+// // createItem(tweetDataBase);
+
+// //add action when smb click on TWEET and extract the info from text area
+// $('#posttweet').on('submit'), (event) => {
+//   event.preventDefault() //stop refreshing
+//   console.log('Hello from ')
+//   console.log(event.target.searchParam.value)
+// }
 
 

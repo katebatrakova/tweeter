@@ -9,21 +9,35 @@ article {
   flex-direction: column;
   padding: 5%;
 }
-header .iconify {
-  font-size: 2em;
-}
-header p {
-  margin-top: 50px;
-}
 
 article:hover {
   box-shadow: 10px 10px 5px -2px #888;
   text-shadow: 0px 0px 1px #545149;
 }
 
+#tweetHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header .iconify {
+  font-size: 2em;
+}
+
+header p {
+  margin-top: 50px;
+}
+
+#handle {
+  font-weight: 700;
+  opacity: 0.5;
+}
+
 hr {
   border-bottom: 3px solid #545149;
 }
+/* TweetFooter */
 article footer {
   display: flex;
   font-size: 25px;
