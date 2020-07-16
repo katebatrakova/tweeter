@@ -68,12 +68,12 @@ $(document).ready(function () {
     //validating the errors
     if (inputData.length === 0) {
       // alert('Sorry, the text area cannot be empty')
-      $(".isa_error").slideDown(500).delay(5000).slideUp(500);
+      $(".isa_error").slideDown().delay(5000).slideUp();
     }
 
     if (inputData.length > 140) {
       // alert('Sorry, your tweet exceeds 140 characters')
-      $(".isa_error2").slideDown(500).delay(5000).slideUp(500);
+      $(".isa_error2").slideDown().delay(5000).slideUp();
 
     }
 

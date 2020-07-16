@@ -1,23 +1,55 @@
 /* Tweeter logo in the nav font */
-nav {
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  height: 120px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #4056a1;
-  color: #ffffff;
-  padding: 1.5em;
+@media only screen and (max-width: 1024px) {
+  nav {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4056a1;
+    color: #ffffff;
+    padding: 1.5em;
+  }
+
+  #logo {
+    font-family: "Bungee", cursive;
+    font-size: 1.5em;
+  }
+
+  #newtweet .iconify {
+    color: red;
+    margin-left: 50%;
+  }
 }
 
-#logo {
-  font-family: "Bungee", cursive;
-  font-size: 1.5em;
-}
+@media only screen and (min-width: 1024px) {
+  nav {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4056a1;
+    color: #ffffff;
+    padding: 1.5em;
+  }
 
-#newtweet .iconify {
-  color: red;
-  margin-left: 50%;
+  #logo {
+    font-family: "Bungee", cursive;
+    font-size: 1.5em;
+    margin-left: 7%;
+  }
+
+  #newtweet {
+    margin-right: 7%;
+  }
+
+  #newtweet .iconify {
+    color: red;
+    margin-left: 50%;
+  }
 }
