@@ -8,7 +8,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #4056a1;
+    /* background-color: #4056a1; */
+    background-color: #c29200;
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-2.png");
     color: #ffffff;
     padding: 1.5em;
   }
