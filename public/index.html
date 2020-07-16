@@ -3,6 +3,8 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- External CSS -->
     <link
@@ -39,8 +41,8 @@
       <span id="logo">tweeter</span>
       <span id="newtweet">
           <strong> Write </strong> a new tweet </br>
-          <i class="iconify" data-icon="mdi-chevron-double-down"></i></p
-      ></span>
+          <i class="iconify" data-icon="mdi-chevron-double-down"></i>
+      </span>
     </nav>
 
     <header id="avatarHeader">
@@ -58,7 +60,15 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form id='posttweet' action="/tweets" method="POST" >
-          <!-- <label for="tweet-text">What are you humming about?</label> -->
+          <!-- validation error messages -->
+          <div class="isa_error">
+            <span class="iconify" data-icon="si-glyph:button-error" data-inline="false"></span>
+            Sorry, the text area cannot be empty.
+         </div>
+         <div class="isa_error2">
+          <span class="iconify" data-icon="si-glyph:button-error" data-inline="false"></span>
+          Sorry, the text exceeds 140 characters.
+       </div>
           <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
           <div id="bottom">
             <button type="submit">Tweet</button>
@@ -91,3 +101,5 @@
     </div>
   </body>
 </html>
+
+

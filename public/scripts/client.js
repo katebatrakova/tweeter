@@ -12,6 +12,8 @@ const escape = function (str) {
   return div.innerHTML;
 }
 
+//
+
 //function takes in a tweet object and returns a tweet <article> HTML structure 
 
 const createTweetElement = function (singleTweet) {
@@ -54,6 +56,7 @@ const renderTweets = function (tweetDataArray) {
 
 
 $(document).ready(function () {
+
   $('#posttweet').on('submit', (event) => {
     // prevent the default form submission behaviour
     event.preventDefault();
@@ -62,13 +65,18 @@ $(document).ready(function () {
     const data = $('#posttweet').serialize()
     let inputData = event.currentTarget[0].value;
 
+    //validating the errors
     if (inputData.length === 0) {
-      alert('Sorry, the text area cannot be empty')
+      // alert('Sorry, the text area cannot be empty')
+      $(".isa_error").slideDown(500).delay(5000).slideUp(500);
     }
 
     if (inputData.length > 140) {
-      alert('Sorry, your tweet exceeds 140 characters')
+      // alert('Sorry, your tweet exceeds 140 characters')
+      $(".isa_error2").slideDown(500).delay(5000).slideUp(500);
+
     }
+
     if (inputData.length <= 140) {
       $.ajax({
         url: tweetDataBase,
@@ -78,7 +86,7 @@ $(document).ready(function () {
         .then((response) => {
           //clearing the text area after submitting
           $("#posttweet")[0].reset()
-          console.log(response, 'response')
+          // console.log(response, 'response')
           loadTweets();
         })
     }
