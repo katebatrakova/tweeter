@@ -5,6 +5,12 @@
  */
 
 
+//escape function preventing XSS with Escaping
+const escape = function (str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 
 //function takes in a tweet object and returns a tweet <article> HTML structure 
 
@@ -21,7 +27,7 @@ const createTweetElement = function (singleTweet) {
     <div><span> <img src="${singleTweet.user.avatars}"/> </span>  <span>${singleTweet.user.name}</span></div>
     <div ><span id = "handle"> ${singleTweet.user.handle} </span> </div>
     </div>
-  <p id='tweetcontent'>${singleTweet.content.text}</p>
+  <p id='tweetcontent'>${escape(singleTweet.content.text)}</p>
   <hr/>  
   </header>  
   <footer>
