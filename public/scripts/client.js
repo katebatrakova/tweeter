@@ -22,7 +22,7 @@ const createTweetElement = function (singleTweet) {
   todayDate = Date.parse(todayDate)
   let tweetDate = `${singleTweet['created_at']}`
   let diff = todayDate - tweetDate;
-  const tweetItem = `
+  const tweetItem = ` 
   <article>
   <header>
     <div id="tweetHeader" >
