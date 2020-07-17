@@ -4,9 +4,10 @@ It is a simple, single-page Twitter clone that uses jQuery, HTML5, CSS, JS and A
 
 ## Screenshots
 
-!["Screenshot of tweet compose box"]()
-!["Screenshot of tweets"]()
-!["Screenshot of tweets"]()
+!["Screenshot of a tweet compose box"](https://github.com/katebatrakova/tweeter/blob/master/docs/compose_area.jpg?raw=true)
+!["Screenshot of a tweet"](https://github.com/katebatrakova/tweeter/blob/master/docs/tweetbox.jpg?raw=true)
+!["Tweeter for iPad"](https://github.com/katebatrakova/tweeter/blob/master/docs/ipadversion.jpg?raw=true)
+!["Tweeter for Desktop"](https://github.com/katebatrakova/tweeter/blob/master/docs/desktopversion.jpg?raw=true)
 
 ## Getting Started
 
